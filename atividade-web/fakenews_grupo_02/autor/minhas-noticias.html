@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Autor - Minhas Noticias</title>
+  <link rel="stylesheet" href="../assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Início</a><a href="../publico/cadastro.html">Cadastro</a><a href="../publico/login.html">Login</a><a href="../publico/busca-tag.html">Tag</a><a href="../publico/busca-uf.html">UF</a><a href="../publico/noticia.html">Notícia</a><a href="../autor/perfil.html">Autor</a><a href="../leitor/perfil.html">Leitor</a><a href="../editor/painel.html">Editor</a><a href="../superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="table-card">
+      <div class="toolbar">
+        <div>
+          <span class="kicker">Autor</span>
+          <h2 style="margin:10px 0 0;">Minhas notícias</h2>
+        </div>
+        <a class="btn primary" href="nova-noticia.html">Nova notícia</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Título</th><th>Status</th><th>Data</th><th>Ações</th></tr></thead>
+          <tbody>
+            <tr><td>Rede de ciclovias cresce no centro</td><td><span class="badge green">Publicado</span></td><td>07/04/2026</td><td><a href="editar-noticia.html">Editar</a></td></tr>
+            <tr><td>Entrevista com a equipe de verificação</td><td><span class="badge orange">Rascunho</span></td><td>06/04/2026</td><td><a href="editar-noticia.html">Editar</a></td></tr>
+            <tr><td>Evento regional reúne estudantes</td><td><span class="badge gray">Arquivada</span></td><td>01/04/2026</td><td><a href="editar-noticia.html">Editar</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Público - Noticia</title>
+  <link rel="stylesheet" href="../assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Início</a><a href="../publico/cadastro.html">Cadastro</a><a href="../publico/login.html">Login</a><a href="../publico/busca-tag.html">Tag</a><a href="../publico/busca-uf.html">UF</a><a href="../publico/noticia.html">Notícia</a><a href="../autor/perfil.html">Autor</a><a href="../leitor/perfil.html">Leitor</a><a href="../editor/painel.html">Editor</a><a href="../superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="article">
+      <div class="meta"><span class="badge">Destaque</span><span>Publicado em 07/04/2026</span><span>Autor: Carla Monteiro</span></div>
+      <h2>Portal lança painel com notícias verificadas e organização por categorias</h2>
+      <p class="small">Esta tela representa o detalhe de uma notícia, com imagem de capa, texto completo e comentários.</p>
+      <div class="card" style="padding:0;overflow:hidden;margin:18px 0;">
+        <div style="min-height:260px;background:linear-gradient(135deg,#dbeafe,#f6eadf);display:flex;align-items:end;padding:22px;font-size:1.6rem;font-weight:700;color:#18315f;">Imagem de capa da notícia</div>
+      </div>
+      <p>O objetivo desta tela é demonstrar um conteúdo completo em estilo editorial. O texto abaixo é apenas ilustrativo e pode ser trocado por qualquer notícia do trabalho.</p>
+      <p>Além do resumo principal, o leitor pode navegar para páginas de comentário, buscar por UF, buscar por tag e retornar à lista de notícias no topo do portal.</p>
+      <div class="hr"></div>
+      <div class="actions">
+        <a class="btn primary" href="../leitor/comentar.html">Comentar</a>
+        <a class="btn secondary" href="busca-tag.html">Ver por tag</a>
+        <a class="btn secondary" href="busca-uf.html">Ver por UF</a>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <article class="panel">
+        <h3>Comentários recentes</h3>
+        <div class="list">
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user1.png" alt="Avatar"><div><h4>João Pedro</h4><p>Excelente organização das telas. Agora ficou fácil acompanhar os temas.</p></div></div>
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user2.png" alt="Avatar"><div><h4>Ana Souza</h4><p>Gostei da apresentação simples e do padrão visual repetido entre as páginas.</p></div></div>
+        </div>
+      </article>
+      <article class="panel">
+        <h3>Tags relacionadas</h3>
+        <div class="pill-group">
+          <span class="badge">#portal</span>
+          <span class="badge orange">#notícias</span>
+          <span class="badge green">#html</span>
+          <span class="badge gray">#css</span>
+        </div>
+        <div class="hr"></div>
+        <p class="small">Página útil para demonstrar leitura, compartilhamento de contexto e ação de comentar.</p>
+      </article>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>

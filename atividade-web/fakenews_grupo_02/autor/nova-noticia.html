@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Autor - Nova Noticia</title>
+  <link rel="stylesheet" href="../assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Início</a><a href="../publico/cadastro.html">Cadastro</a><a href="../publico/login.html">Login</a><a href="../publico/busca-tag.html">Tag</a><a href="../publico/busca-uf.html">UF</a><a href="../publico/noticia.html">Notícia</a><a href="../autor/perfil.html">Autor</a><a href="../leitor/perfil.html">Leitor</a><a href="../editor/painel.html">Editor</a><a href="../superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="grid-2">
+      <article class="form-card">
+        <span class="kicker">Nova notícia</span>
+        <h2>Criar publicação</h2>
+        <form class="form-grid">
+          <div class="field full"><label>Título</label><input placeholder="Título da notícia" /></div>
+          <div class="field"><label>Categoria</label><select><option>Cidade</option><option>Política</option><option>Tecnologia</option></select></div>
+          <div class="field"><label>Tag</label><input placeholder="#cidade" /></div>
+          <div class="field full"><label>Resumo</label><textarea>Resumo curto para a listagem de notícias.</textarea></div>
+          <div class="field full"><label>Conteúdo</label><textarea>Texto principal da notícia com mais detalhes e contexto.</textarea></div>
+          <div class="field full"><button class="primary" type="button">Salvar rascunho</button></div>
+        </form>
+      </article>
+      <article class="panel">
+        <h3>Boas práticas</h3>
+        <div class="timeline">
+          <div class="timeline-item"><div class="dot"></div><div><strong>Use título direto</strong><div class="small">Facilita leitura e melhora a organização visual.</div></div></div>
+          <div class="timeline-item"><div class="dot"></div><div><strong>Preencha tag e categoria</strong><div class="small">Ajuda no fluxo de busca por assunto e UF.</div></div></div>
+          <div class="timeline-item"><div class="dot"></div><div><strong>Salve como rascunho</strong><div class="small">O editor poderá publicar depois.</div></div></div>
+        </div>
+      </article>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>

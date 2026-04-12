@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Portal</title>
+  <link rel="stylesheet" href="assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Início</a><a href="publico/cadastro.html">Cadastro</a><a href="publico/login.html">Login</a><a href="publico/busca-tag.html">Tag</a><a href="publico/busca-uf.html">UF</a><a href="publico/noticia.html">Notícia</a><a href="autor/perfil.html">Autor</a><a href="leitor/perfil.html">Leitor</a><a href="editor/painel.html">Editor</a><a href="superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="hero">
+      <article class="card">
+        <span class="kicker">Bem-vindo ao portal</span>
+        <h2>Notícias, perfis e áreas de administração em um único site estático.</h2>
+        <p>
+          Este projeto foi montado apenas com HTML e CSS, seguindo o fluxo de telas apresentado.
+          A proposta é mostrar navegação entre áreas públicas, autor, leitor, editor e superadmin,
+          com exemplos de conteúdo e formulários.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="publico/noticia.html">Ver lista de notícias</a>
+          <a class="btn secondary" href="publico/login.html">Acessar login</a>
+        </div>
+      </article>
+      <aside class="card">
+        <h3>Resumo do portal</h3>
+        <div class="stats">
+          <div class="stat"><strong>06</strong><span>páginas públicas</span></div>
+          <div class="stat"><strong>09</strong><span>telas de perfis e notícias</span></div>
+          <div class="stat"><strong>07</strong><span>telas administrativas</span></div>
+        </div>
+        <div class="hr"></div>
+        <p class="small">Use o menu superior para explorar os módulos e validar os fluxos de navegação.</p>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h3>Acesso por perfil</h3>
+      <div class="role-strip">
+        <a class="role" href="publico/cadastro.html"><strong>Público</strong><span class="small">Cadastro, login, busca e detalhe da notícia.</span></a>
+        <a class="role" href="autor/perfil.html"><strong>Autor</strong><span class="small">Meu perfil, minhas notícias, nova e edição.</span></a>
+        <a class="role" href="editor/painel.html"><strong>Editor</strong><span class="small">Painel, publicação e edição de qualquer notícia.</span></a>
+        <a class="role" href="superadmin/dashboard.html"><strong>Superadmin</strong><span class="small">Dashboard e telas CRUD completas.</span></a>
+      </div>
+    </section>
+
+    <section class="section grid-3">
+      <article class="news-card">
+        <div class="thumb">Capa da notícia</div>
+        <div class="content">
+          <div class="meta"><span class="badge">Política</span><span>Hoje • 08:40</span></div>
+          <h4>Nova ponte digital conecta bairros e acelera o acesso à informação</h4>
+          <p class="small">Texto de exemplo com chamada, resumo e link para a página de detalhe.</p>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="thumb">Entrevista especial</div>
+        <div class="content">
+          <div class="meta"><span class="badge orange">Tecnologia</span><span>Ontem • 19:10</span></div>
+          <h4>Redação adota checagem em duas etapas para reduzir boatos</h4>
+          <p class="small">Conteúdo demonstrativo para a listagem de notícias.</p>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="thumb">Agenda da cidade</div>
+        <div class="content">
+          <div class="meta"><span class="badge green">Cidades</span><span>07/04 • 12:00</span></div>
+          <h4>Prefeitura divulga calendário de eventos e serviços por UF</h4>
+          <p class="small">Exemplo de bloco para a área pública do portal.</p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>

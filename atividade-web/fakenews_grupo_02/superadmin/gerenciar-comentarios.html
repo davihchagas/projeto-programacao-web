@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Admin - Gerenciar Comentarios</title>
+  <link rel="stylesheet" href="../assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Início</a><a href="../publico/cadastro.html">Cadastro</a><a href="../publico/login.html">Login</a><a href="../publico/busca-tag.html">Tag</a><a href="../publico/busca-uf.html">UF</a><a href="../publico/noticia.html">Notícia</a><a href="../autor/perfil.html">Autor</a><a href="../leitor/perfil.html">Leitor</a><a href="../editor/painel.html">Editor</a><a href="../superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="grid-2">
+      <article class="panel">
+        <h3>Comentários pendentes</h3>
+        <div class="list">
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user1.png" alt="Avatar"><div><h4>João Pedro</h4><p>Excelente organização das telas.</p><div class="actions"><a class="btn primary" href="#">Aprovar</a><a class="btn secondary" href="#">Excluir</a></div></div></div>
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user2.png" alt="Avatar"><div><h4>Ana Souza</h4><p>Gostei da clareza do layout.</p><div class="actions"><a class="btn primary" href="#">Aprovar</a><a class="btn secondary" href="#">Excluir</a></div></div></div>
+        </div>
+      </article>
+      <article class="form-card">
+        <h2>Filtrar comentários</h2>
+        <form class="form-grid"><div class="field"><label>Status</label><select><option>Pendentes</option><option>Aprovados</option><option>Reprovados</option></select></div><div class="field"><label>Buscar palavra</label><input placeholder="layout" /></div><div class="field full"><button class="primary" type="button">Filtrar</button></div></form>
+      </article>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>

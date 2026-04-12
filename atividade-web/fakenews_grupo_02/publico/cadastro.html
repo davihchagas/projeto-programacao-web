@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fake News - Público - Cadastro</title>
+  <link rel="stylesheet" href="../assets/css/estilo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark">FN</div>
+        <div>
+          <h1>Fake News Grupo 02</h1>
+          <p>Portal de notícias estático em HTML e CSS</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Início</a><a href="../publico/cadastro.html">Cadastro</a><a href="../publico/login.html">Login</a><a href="../publico/busca-tag.html">Tag</a><a href="../publico/busca-uf.html">UF</a><a href="../publico/noticia.html">Notícia</a><a href="../autor/perfil.html">Autor</a><a href="../leitor/perfil.html">Leitor</a><a href="../editor/painel.html">Editor</a><a href="../superadmin/dashboard.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+  <main class="page container">
+
+    <section class="grid-2">
+      <article class="form-card">
+        <span class="kicker">Cadastro</span>
+        <h2>Crie sua conta</h2>
+        <p class="small">Exemplo de formulário com campos comuns para um portal de notícias.</p>
+        <form class="form-grid">
+          <div class="field"><label>Nome completo</label><input placeholder="Maria Silva" /></div>
+          <div class="field"><label>E-mail</label><input type="email" placeholder="maria@email.com" /></div>
+          <div class="field"><label>Usuário</label><input placeholder="marias" /></div>
+          <div class="field"><label>Perfil</label><select><option>Leitor</option><option>Autor</option></select></div>
+          <div class="field full"><label>Senha</label><input type="password" placeholder="••••••••" /></div>
+          <div class="field full"><label>Confirmar senha</label><input type="password" placeholder="••••••••" /></div>
+          <div class="field full"><button class="primary" type="button">Cadastrar</button></div>
+        </form>
+      </article>
+      <article class="panel">
+        <h3>Informações da conta</h3>
+        <div class="list">
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user1.png" alt="Usuário exemplo 1"><div><h4>Usuário exemplo</h4><p>Após o cadastro, o visitante pode comentar, seguir autores e salvar notícias.</p></div></div>
+          <div class="list-item"><img class="avatar" src="../assets/images/perfis/user2.png" alt="Usuário exemplo 2"><div><h4>Perfil escolhido</h4><p>O campo perfil serve apenas para demonstrar a navegação do trabalho.</p></div></div>
+        </div>
+      </article>
+    </section>
+
+  </main>
+  <footer class="footer container">
+    <div class="card">
+      <div>
+        <strong>Fake News Grupo 02</strong>
+        <div class="small">Projeto acadêmico com navegação, formulários e telas CRUD simuladas.</div>
+      </div>
+      <div class="small">Executar com Live Server no VS Code.</div>
+    </div>
+  </footer>
+</body>
+</html>
