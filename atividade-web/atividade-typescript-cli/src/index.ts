@@ -1,6 +1,6 @@
 import { asc, desc, eq } from "drizzle-orm";
 import { closePrompt, ask, pause } from "./utils/prompt";
-import { db, cidade, noticia, uf } from "./db";
+import { db, cidade, noticia, uf, tag, noticiaTag } from "./db";
 
 type NoticiaLinha = {
   noticiaId: number;
@@ -20,6 +20,7 @@ function normalizarTexto(valor: string): string {
 
 function formatarData(valor: string): string {
   const data = new Date(valor.replace(" ", "T") + "Z");
+
   return new Intl.DateTimeFormat("pt-BR", {
     dateStyle: "short",
     timeStyle: "medium",
@@ -27,45 +28,9 @@ function formatarData(valor: string): string {
   }).format(data);
 }
 
-async function listarUfs(): Promise<void> {
-  const ufs = await db.select().from(uf).orderBy(asc(uf.sigla));
-  if (ufs.length === 0) {
-    console.log("\nNenhuma UF cadastrada.");
-    return;
-  }
-
-  console.log("\nUFs cadastradas:");
-  for (const item of ufs) {
-    console.log(`  ${item.id} - ${item.nome} (${item.sigla})`);
-  }
-}
-
-async function listarCidades(): Promise<void> {
-  const cidades = await db
-    .select({
-      id: cidade.id,
-      nome: cidade.nome,
-      ufId: uf.id,
-      ufNome: uf.nome,
-      ufSigla: uf.sigla
-    })
-    .from(cidade)
-    .innerJoin(uf, eq(cidade.ufId, uf.id))
-    .orderBy(asc(uf.sigla), asc(cidade.nome));
-
-  if (cidades.length === 0) {
-    console.log("\nNenhuma cidade cadastrada.");
-    return;
-  }
-
-  console.log("\nCidades cadastradas:");
-  for (const item of cidades) {
-    console.log(`  ${item.id} - ${item.nome} (${item.ufSigla})`);
-  }
-}
-
 async function cadastrarUf(): Promise<void> {
   console.log("\n=== Cadastrar UF ===");
+
   const nome = normalizarTexto(await ask("Nome da UF: "));
   const sigla = normalizarTexto(await ask("Sigla da UF: ")).toUpperCase();
 
@@ -74,54 +39,72 @@ async function cadastrarUf(): Promise<void> {
     return;
   }
 
-  const existente = await db.select().from(uf).where(eq(uf.sigla, sigla)).limit(1);
+  const existente = await db.select().from(uf).where(eq(uf.sigla, sigla));
+
   if (existente.length > 0) {
     console.log("\nJá existe uma UF com essa sigla.");
     return;
   }
 
   await db.insert(uf).values({ nome, sigla });
+
   console.log("\nUF cadastrada com sucesso.");
 }
 
 async function cadastrarCidade(): Promise<void> {
-  console.log("\n=== Cadastrar cidade ===");
+  console.log("\n=== Cadastrar Cidade ===");
+
   const ufs = await db.select().from(uf).orderBy(asc(uf.sigla));
 
   if (ufs.length === 0) {
-    console.log("\nCadastre uma UF antes de cadastrar cidades.");
+    console.log("\nCadastre uma UF primeiro.");
     return;
   }
 
-  console.log("\nSelecione a UF:");
+  console.log("\nUFs disponíveis:");
+
   for (const item of ufs) {
-    console.log(`  ${item.id} - ${item.nome} (${item.sigla})`);
+    console.log(`${item.id} - ${item.nome} (${item.sigla})`);
   }
 
   const ufId = Number(await ask("\nInforme o ID da UF: "));
-  if (!Number.isInteger(ufId)) {
-    console.log("\nID inválido.");
-    return;
-  }
-
-  const ufSelecionada = await db.select().from(uf).where(eq(uf.id, ufId)).limit(1);
-  if (ufSelecionada.length === 0) {
-    console.log("\nUF não encontrada.");
-    return;
-  }
-
   const nome = normalizarTexto(await ask("Nome da cidade: "));
-  if (!nome) {
-    console.log("\nNome da cidade é obrigatório.");
+
+  if (!nome || !Number.isInteger(ufId)) {
+    console.log("\nDados inválidos.");
     return;
   }
 
   await db.insert(cidade).values({ nome, ufId });
+
   console.log("\nCidade cadastrada com sucesso.");
 }
 
+async function cadastrarTag(): Promise<void> {
+  console.log("\n=== Cadastrar Tag ===");
+
+  const nome = normalizarTexto(await ask("Nome da tag: "));
+
+  if (!nome) {
+    console.log("\nNome obrigatório.");
+    return;
+  }
+
+  const existente = await db.select().from(tag).where(eq(tag.nome, nome));
+
+  if (existente.length > 0) {
+    console.log("\nEssa tag já existe.");
+    return;
+  }
+
+  await db.insert(tag).values({ nome });
+
+  console.log("\nTag cadastrada com sucesso.");
+}
+
 async function cadastrarNoticia(): Promise<void> {
-  console.log("\n=== Cadastrar notícia ===");
+  console.log("\n=== Cadastrar Notícia ===");
+
   const cidades = await db
     .select({
       id: cidade.id,
@@ -133,72 +116,81 @@ async function cadastrarNoticia(): Promise<void> {
     .orderBy(asc(uf.sigla), asc(cidade.nome));
 
   if (cidades.length === 0) {
-    console.log("\nCadastre ao menos uma cidade antes de cadastrar notícias.");
+    console.log("\nCadastre uma cidade antes.");
     return;
   }
 
   console.log("\nCidades disponíveis:");
+
   for (const item of cidades) {
-    console.log(`  ${item.id} - ${item.nome} (${item.ufSigla})`);
+    console.log(`${item.id} - ${item.nome} (${item.ufSigla})`);
   }
 
   const cidadeId = Number(await ask("\nInforme o ID da cidade: "));
-  if (!Number.isInteger(cidadeId)) {
-    console.log("\nID inválido.");
-    return;
-  }
-
-  const cidadeSelecionada = cidades.find((item) => item.id === cidadeId);
-  if (!cidadeSelecionada) {
-    console.log("\nCidade não encontrada.");
-    return;
-  }
-
   const titulo = normalizarTexto(await ask("Título: "));
   const texto = normalizarTexto(await ask("Texto: "));
 
-  if (!titulo || !texto) {
-    console.log("\nTítulo e texto são obrigatórios.");
-    return;
-  }
+  const noticiaCriada = await db
+    .insert(noticia)
+    .values({
+      titulo,
+      texto,
+      cidadeId
+    })
+    .returning();
 
-  await db.insert(noticia).values({
-    titulo,
-    texto,
-    cidadeId
-  });
+  const tagsDisponiveis = await db.select().from(tag);
+
+  if (tagsDisponiveis.length > 0) {
+    console.log("\nTags disponíveis:");
+
+    for (const item of tagsDisponiveis) {
+      console.log(`${item.id} - ${item.nome}`);
+    }
+
+    const tagsInput = await ask(
+      "\nDigite IDs das tags separados por vírgula (ou ENTER para nenhuma): "
+    );
+
+    if (tagsInput.trim()) {
+      const idsTags = tagsInput
+        .split(",")
+        .map((id) => Number(id.trim()))
+        .filter((id) => !isNaN(id));
+
+      for (const tagId of idsTags) {
+        await db.insert(noticiaTag).values({
+          noticiaId: noticiaCriada[0].id,
+          tagId
+        });
+      }
+    }
+  }
 
   console.log("\nNotícia cadastrada com sucesso.");
 }
 
 async function listarNoticiasOrdenadas(descendente: boolean): Promise<void> {
-  const ordem = descendente ? "mais recentes primeiro" : "mais antigas primeiro";
-  console.log(`\n=== Listar notícias (${ordem}) ===`);
-
   const noticias = await db
     .select({
       noticiaId: noticia.id,
       titulo: noticia.titulo,
-      texto: noticia.texto,
       dataCriacao: noticia.dataCriacao,
-      cidadeId: cidade.id,
       cidadeNome: cidade.nome,
-      ufId: uf.id,
-      ufNome: uf.nome,
       ufSigla: uf.sigla
     })
     .from(noticia)
     .innerJoin(cidade, eq(noticia.cidadeId, cidade.id))
     .innerJoin(uf, eq(cidade.ufId, uf.id))
-    .orderBy(descendente ? desc(noticia.dataCriacao) : asc(noticia.dataCriacao), descendente ? desc(noticia.id) : asc(noticia.id));
+    .orderBy(descendente ? desc(noticia.dataCriacao) : asc(noticia.dataCriacao));
 
   if (noticias.length === 0) {
-    console.log("\nNenhuma notícia cadastrada.");
+    console.log("\nNenhuma notícia encontrada.");
     return;
   }
 
   for (const item of noticias) {
-    console.log("\n----------------------------------------");
+    console.log("\n--------------------");
     console.log(`ID: ${item.noticiaId}`);
     console.log(`Título: ${item.titulo}`);
     console.log(`Cidade: ${item.cidadeNome} - ${item.ufSigla}`);
@@ -207,204 +199,113 @@ async function listarNoticiasOrdenadas(descendente: boolean): Promise<void> {
 }
 
 async function listarNoticiasPorUf(): Promise<void> {
-  console.log("\n=== Notícias de um estado específico ===");
-  const ufs = await db.select().from(uf).orderBy(asc(uf.sigla));
-
-  if (ufs.length === 0) {
-    console.log("\nNenhuma UF cadastrada.");
-    return;
-  }
-
-  for (const item of ufs) {
-    console.log(`  ${item.id} - ${item.nome} (${item.sigla})`);
-  }
-
-  const sigla = normalizarTexto(await ask("\nInforme a sigla da UF: ")).toUpperCase();
-  const ufSelecionada = await db.select().from(uf).where(eq(uf.sigla, sigla)).limit(1);
-
-  if (ufSelecionada.length === 0) {
-    console.log("\nUF não encontrada.");
-    return;
-  }
-
-  const opcao = normalizarTexto(await ask("Ordenar por (a) mais recentes ou (b) mais antigas? ")).toLowerCase();
-  const descendente = opcao !== "b";
+  const sigla = normalizarTexto(await ask("Informe a sigla da UF: ")).toUpperCase();
 
   const noticias = await db
     .select({
-      noticiaId: noticia.id,
       titulo: noticia.titulo,
-      texto: noticia.texto,
-      dataCriacao: noticia.dataCriacao,
       cidadeNome: cidade.nome,
       ufSigla: uf.sigla
     })
     .from(noticia)
     .innerJoin(cidade, eq(noticia.cidadeId, cidade.id))
     .innerJoin(uf, eq(cidade.ufId, uf.id))
-    .where(eq(uf.sigla, sigla))
-    .orderBy(descendente ? desc(noticia.dataCriacao) : asc(noticia.dataCriacao), descendente ? desc(noticia.id) : asc(noticia.id));
+    .where(eq(uf.sigla, sigla));
 
-  if (noticias.length === 0) {
-    console.log("\nNenhuma notícia encontrada para esta UF.");
-    return;
-  }
-
-  console.log("");
   for (const item of noticias) {
-    console.log("----------------------------------------");
-    console.log(`ID: ${item.noticiaId}`);
-    console.log(`Título: ${item.titulo}`);
-    console.log(`Cidade: ${item.cidadeNome} - ${item.ufSigla}`);
-    console.log(`Data: ${formatarData(item.dataCriacao)}`);
+    console.log(`${item.titulo} - ${item.cidadeNome}/${item.ufSigla}`);
   }
 }
 
 async function listarNoticiasAgrupadasPorEstado(): Promise<void> {
-  while (true) {
-    const linhas: NoticiaLinha[] = await db
-      .select({
-        noticiaId: noticia.id,
-        titulo: noticia.titulo,
-        texto: noticia.texto,
-        dataCriacao: noticia.dataCriacao,
-        cidadeId: cidade.id,
-        cidadeNome: cidade.nome,
-        ufId: uf.id,
-        ufNome: uf.nome,
-        ufSigla: uf.sigla
-      })
-      .from(noticia)
-      .innerJoin(cidade, eq(noticia.cidadeId, cidade.id))
-      .innerJoin(uf, eq(cidade.ufId, uf.id))
-      .orderBy(asc(uf.sigla), asc(cidade.nome), desc(noticia.dataCriacao), desc(noticia.id));
+  const linhas = await db
+    .select({
+      titulo: noticia.titulo,
+      cidadeNome: cidade.nome,
+      ufSigla: uf.sigla
+    })
+    .from(noticia)
+    .innerJoin(cidade, eq(noticia.cidadeId, cidade.id))
+    .innerJoin(uf, eq(cidade.ufId, uf.id))
+    .orderBy(asc(uf.sigla));
 
-    if (linhas.length === 0) {
-      console.log("\nNenhuma notícia cadastrada.");
-      return;
+  let ufAtual = "";
+
+  for (const item of linhas) {
+    if (item.ufSigla !== ufAtual) {
+      ufAtual = item.ufSigla;
+      console.log(`\n# ${ufAtual}`);
     }
 
-    console.log("\n--- LISTA AGRUPADA POR ESTADOS ---\n");
-
-    let contador = 1;
-    const mapaNumeros = new Map<number, number>();
-    let ufAtual = "";
-
-    for (const item of linhas) {
-      if (item.ufSigla !== ufAtual) {
-        ufAtual = item.ufSigla;
-        console.log(`# ${ufAtual}`);
-      }
-
-      console.log(`${contador} - ${item.titulo} - ${item.cidadeNome}`);
-      mapaNumeros.set(contador, item.noticiaId);
-      contador++;
-    }
-
-    const opcao = normalizarTexto(await ask("\n(d) Detalhar notícia | (z) Voltar: ")).toLowerCase();
-
-    if (opcao === "z") {
-      return;
-    }
-
-    if (opcao === "d") {
-      const numero = Number(await ask("Informe o número da notícia: "));
-      const noticiaId = mapaNumeros.get(numero);
-
-      if (!noticiaId) {
-        console.log("\nNúmero inválido.");
-        await pause();
-        continue;
-      }
-
-      const detalhe = await db
-        .select({
-          titulo: noticia.titulo,
-          texto: noticia.texto
-        })
-        .from(noticia)
-        .where(eq(noticia.id, noticiaId))
-        .limit(1);
-
-      if (detalhe.length === 0) {
-        console.log("\nNotícia não encontrada.");
-        await pause();
-        continue;
-      }
-
-      console.log("\nEm seguida, exibe o detalhe completo:\n");
-      console.log(`Título: ${detalhe[0].titulo}`);
-      console.log(`Texto : ${detalhe[0].texto}`);
-      await pause();
-      continue;
-    }
-
-    console.log("\nOpção inválida.");
+    console.log(`- ${item.titulo} (${item.cidadeNome})`);
   }
 }
 
 async function menuPrincipal(): Promise<void> {
   while (true) {
-    console.log("\n==============================");
-    console.log("      MENU PRINCIPAL");
-    console.log("==============================");
+    console.log("\n====================");
+    console.log("MENU PRINCIPAL");
+    console.log("====================");
     console.log("0 - Cadastrar notícia");
-    console.log("1 - Exibir todas as notícias (mais recentes primeiro)");
-    console.log("2 - Exibir todas as notícias (mais antigas primeiro)");
-    console.log("3 - Exibir notícias de um estado específico");
-    console.log("4 - Exibir todas as notícias agrupadas por estado");
+    console.log("1 - Exibir notícias recentes");
+    console.log("2 - Exibir notícias antigas");
+    console.log("3 - Exibir notícias por UF");
+    console.log("4 - Exibir notícias agrupadas");
     console.log("5 - Cadastrar UF");
     console.log("6 - Cadastrar cidade");
-    console.log("7 - Sair");
+    console.log("7 - Cadastrar tag");
+    console.log("8 - Sair");
 
-    const opcao = normalizarTexto(await ask("\nEscolha uma opção: "));
+    const opcao = await ask("\nEscolha: ");
 
     switch (opcao) {
       case "0":
         await cadastrarNoticia();
-        await pause();
         break;
+
       case "1":
         await listarNoticiasOrdenadas(true);
-        await pause();
         break;
+
       case "2":
         await listarNoticiasOrdenadas(false);
-        await pause();
         break;
+
       case "3":
         await listarNoticiasPorUf();
-        await pause();
         break;
+
       case "4":
         await listarNoticiasAgrupadasPorEstado();
         break;
+
       case "5":
         await cadastrarUf();
-        await pause();
         break;
+
       case "6":
         await cadastrarCidade();
-        await pause();
         break;
+
       case "7":
+        await cadastrarTag();
+        break;
+
+      case "8":
         closePrompt();
         return;
+
       default:
         console.log("\nOpção inválida.");
-        await pause();
     }
+
+    await pause();
   }
 }
 
-async function main(): Promise<void> {
-  console.log("Sistema CLI de Notícias iniciado.");
+async function main() {
+  console.log("Sistema iniciado.");
   await menuPrincipal();
-  console.log("\nPrograma encerrado.");
 }
 
-main().catch((error) => {
-  console.error("\nErro inesperado:", error);
-  closePrompt();
-  process.exit(1);
-});
+main();
