@@ -1,16 +1,20 @@
-import { Link } from "react-router";
-import styles from "./Header.module.css";
+import { useNavigate } from "react-router";
+import styles from "./Hero.module.css";
 
-export default function Header() {
+
+export default function Hero() {
+  const navigate = useNavigate();
+
   return (
-    <header className={styles.header}>
-      <h1 className={styles.logo}>Portal</h1>
+    <section className={styles.hero}>
+      <img src="https://via.placeholder.com/1200x300" />
 
-      <nav className={styles.nav}>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/cadastro">Cadastro</Link>
-      </nav>
-    </header>
-  )
+      <div className={styles.overlay}>
+        <h2>Notícia em destaque</h2>
+        <button onClick={() => navigate("/noticia/1")}>
+          Ler mais
+        </button>
+      </div>
+    </section>
+  );
 }
