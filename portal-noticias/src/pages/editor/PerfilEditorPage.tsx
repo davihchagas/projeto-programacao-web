@@ -1,3 +1,9 @@
+import PageLayout from "../../components/layout/PageLayout";
+
 export default function PerfilEditorPage () {
-    return {}
+    return (
+        <PageLayout title="Perfil Editor">
+            <p>Conteúdo</p>
+        </PageLayout>
+    )
 }
