@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding: 40px 20px;
+  }
+  
+  /* 404 GRANDE */
+  .code {
+    font-size: 80px;
+    color: #007bff;
+    margin: 0;
+  }
+  
+  /* BOTÕES */
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .primary {
+    background: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  
+  .secondary {
+    background: #ccc;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  
+  /* LINKS */
+  .links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .links a {
+    color: #007bff;
+    text-decoration: none;
+  }

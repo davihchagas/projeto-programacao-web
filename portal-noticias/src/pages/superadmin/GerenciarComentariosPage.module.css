@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* FILTROS */
+  .filters {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  /* AÇÕES EM LOTE */
+  .bulkActions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .bulkActions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .delete {
+    background: #dc3545;
+    color: white;
+  }
+  
+  /* LISTA */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* ITEM */
+  .item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* AVATAR */
+  .avatar {
+    border-radius: 50%;
+  }
+  
+  /* CONTEÚDO */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  /* STATUS */
+  .aprovado {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .pendente {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  /* AÇÕES */
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .approve {
+    color: green;
+  }
+  
+  .reject {
+    color: red;
+  }
+  
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }

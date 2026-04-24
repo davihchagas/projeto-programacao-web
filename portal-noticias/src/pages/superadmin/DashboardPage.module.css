@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* SIDEBAR */
+  .sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* MAIN */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  
+  .card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* SECTIONS */
+  .section {
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+  
+  /* CHART */
+  .chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 150px;
+  }
+  
+  .barWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .bar {
+    width: 100%;
+    background: #007bff;
+  }
+  
+  /* TABLES */
+  .tables {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* AVATAR */
+  .avatar {
+    border-radius: 50%;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .tables {
+      grid-template-columns: 1fr;
+    }
+  }

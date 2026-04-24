@@ -1,0 +1,47 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* FORM */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .form input,
+  .form select,
+  .form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  /* CHECKBOX */
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  /* BOTÕES */
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .actions button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .cancel {
+    background: #ccc;
+  }

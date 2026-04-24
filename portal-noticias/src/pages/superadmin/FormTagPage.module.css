@@ -1,0 +1,82 @@
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  /* LAYOUT */
+  .content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* FORM */
+  .form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+  
+  .form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  /* SLUG */
+  .slug {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  
+  .slug span {
+    color: #007bff;
+  }
+  
+  /* PREVIEW */
+  .preview {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .badge {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+  }
+  
+  /* BOTÕES */
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .actions button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .cancel {
+    background: #ccc;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+    }
+  
+    .preview {
+      width: 100%;
+    }
+  }

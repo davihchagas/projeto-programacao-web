@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* FILTROS */
+  .filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  /* TABELA */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* AVATAR */
+  .avatar {
+    border-radius: 50%;
+  }
+  
+  /* AÇÕES */
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .actions a,
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }

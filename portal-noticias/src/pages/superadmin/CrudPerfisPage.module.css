@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+  
+  /* CARD */
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  /* CORES */
+  .leitor {
+    background: #6c757d;
+  }
+  
+  .autor {
+    background: #007bff;
+  }
+  
+  .editor {
+    background: #fd7e14;
+  }
+  
+  .admin {
+    background: #dc3545;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }

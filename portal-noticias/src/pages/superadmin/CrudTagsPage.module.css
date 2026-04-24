@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .newButton {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  
+  /* TABLE */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* BADGE */
+  .badge {
+    background: #007bff;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 15px;
+  }
+  
+  /* ACTIONS */
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .actions a,
+  .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }

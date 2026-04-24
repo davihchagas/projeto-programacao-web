@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* SIDEBAR */
+  .sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* MAIN */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* SECTIONS */
+  .section {
+    background: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+  }
+  
+  /* TABLE */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* COMMENTS */
+  .comment {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  /* ACTIONS */
+  .actions {
+    margin-top: 5px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .approve {
+    background: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .reject {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* CHART */
+  .chart {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .barRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .bar {
+    flex: 1;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+  }
+  
+  .fill {
+    height: 100%;
+    background: #007bff;
+    border-radius: 5px;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
