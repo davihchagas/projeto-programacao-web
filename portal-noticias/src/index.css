@@ -6,8 +6,46 @@
   font-family: sans-serif;
 }
 
-/* variáveis */
+button {
+  cursor: pointer;
+}
+
 :root {
-  --primary: #2563eb;
-  --gray: #f3f4f6;
+  --primary: #007bff;
+  --primary-hover: #0056b3;
+
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+
+  --bg: #f5f6fa;
+  --card-bg: #ffffff;
+
+  --text: #333;
+  --border: #ddd;
+
+  --radius: 10px;
+  --transition: 0.2s ease;
+}
+
+table tr:hover {
+  background: #f1f3f5;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
 }

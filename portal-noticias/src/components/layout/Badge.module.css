@@ -1,0 +1,9 @@
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  
+  .primary { background: var(--primary); color: white; }
+  .success { background: var(--success); color: white; }
+  .warning { background: var(--warning); }

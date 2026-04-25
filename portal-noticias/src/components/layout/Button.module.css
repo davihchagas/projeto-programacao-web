@@ -1,0 +1,39 @@
+.btn {
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    border: none;
+    transition: var(--transition);
+    font-weight: bold;
+  }
+  
+  .full {
+    width: 100%;
+  }
+  
+  /* VARIANTS */
+  .primary {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .primary:hover {
+    background: var(--primary-hover);
+  }
+  
+  .secondary {
+    background: #ccc;
+  }
+  
+  .secondary:hover {
+    background: #bbb;
+  }
+  
+  .success {
+    background: var(--success);
+    color: white;
+  }
+  
+  .danger {
+    background: var(--danger);
+    color: white;
+  }
