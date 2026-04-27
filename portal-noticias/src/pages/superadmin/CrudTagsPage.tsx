@@ -4,6 +4,7 @@ import styles from "./CrudTagsPage.module.css";
 
 import { tags } from "../../data/tags";
 import { noticias } from "../../data/noticias";
+import Button from "../../components/ui/Button";
 
 export default function CrudTagsPage() {
   function handleDelete(id: number) {
@@ -68,11 +69,11 @@ export default function CrudTagsPage() {
                       ✏️
                     </Link>
 
-                    <button
+                    <Button
                       onClick={() => handleDelete(tag.id)}
                     >
                       🗑
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               );

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router";
 import PageLayout from "../../components/layout/PageLayout";
 import styles from "./LembrarSenhaPage.module.css";
+import Card from "../../components/ui/Card";
+import InputField from "../../components/ui/InputField";
+import Button from "../../components/ui/Button";
 
 export default function LembrarSenhaPage() {
   const [email, setEmail] = useState("");
@@ -19,7 +22,7 @@ export default function LembrarSenhaPage() {
   return (
     <PageLayout title="Recuperar Senha" showBackButton={false}>
       <div className={styles.container}>
-        <div className={styles.card}>
+        <Card>
           <h2 className={styles.title}>Recuperar Senha</h2>
 
           <p className={styles.description}>
@@ -27,17 +30,16 @@ export default function LembrarSenhaPage() {
           </p>
 
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input
+            <InputField
               type="email"
               placeholder="E-mail"
-              className={styles.input}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <button type="submit" className={styles.button}>
+            <Button type="submit">
               Enviar
-            </button>
+            </Button>
           </form>
 
           {enviado && (
@@ -49,7 +51,7 @@ export default function LembrarSenhaPage() {
           <div className={styles.links}>
             <Link to="/login">Voltar para Login</Link>
           </div>
-        </div>
+        </Card>
       </div>
     </PageLayout>
   );

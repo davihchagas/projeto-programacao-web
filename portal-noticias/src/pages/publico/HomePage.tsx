@@ -6,6 +6,8 @@ import { noticias } from "../../data/noticias";
 import { usuarios } from "../../data/usuarios";
 import { tags } from "../../data/tags";
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
 
 export default function HomePage() {
   const noticiasPublicadas = noticias.filter((n) => n.publicada);
@@ -33,18 +35,17 @@ export default function HomePage() {
 
         {/* SEARCH + FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             type="text"
-            placeholder="🔍 Buscar notícias..."
-            className={styles.search}
+            placeholder="Buscar notícias..."
           />
 
-          <select className={styles.select}>
+          <SelectField>
             <option>Filtrar por UF</option>
             {ufs.map((uf) => (
               <option key={uf.id}>{uf.sigla}</option>
             ))}
-          </select>
+          </SelectField>
         </div>
 
         {/* TAGS */}

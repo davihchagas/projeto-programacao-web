@@ -4,6 +4,7 @@ import styles from "./BuscaPorTagPage.module.css";
 
 import { tags } from "../../data/tags";
 import { noticias } from "../../data/noticias";
+import Badge from "../../components/ui/Badge";
 
 export default function BuscaPorTagPage() {
   const { slug } = useParams();
@@ -32,9 +33,9 @@ export default function BuscaPorTagPage() {
       <div className={styles.container}>
         {/* Tag principal */}
         <div className={styles.tagHeader}>
-          <span className={styles.tagBadge}>
+          <Badge className={styles.tagBadge}>
             #{tagAtual.nome}
-          </span>
+          </Badge>
         </div>
 
         {/* Grid de notícias */}

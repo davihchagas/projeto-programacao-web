@@ -6,6 +6,9 @@ import styles from "./CrudUsuariosPage.module.css";
 import { usuarios } from "../../data/usuarios";
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function CrudUsuariosPage() {
   const [busca, setBusca] = useState("");
@@ -57,13 +60,13 @@ export default function CrudUsuariosPage() {
         
         {/* FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             placeholder="Buscar nome ou email..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={perfilFiltro}
             onChange={(e) =>
               setPerfilFiltro(e.target.value)
@@ -74,9 +77,9 @@ export default function CrudUsuariosPage() {
             <option value="AUTOR">Autor</option>
             <option value="EDITOR">Editor</option>
             <option value="SUPERADMIN">Admin</option>
-          </select>
+          </SelectField>
 
-          <select
+          <SelectField
             value={statusFiltro}
             onChange={(e) =>
               setStatusFiltro(e.target.value)
@@ -85,9 +88,9 @@ export default function CrudUsuariosPage() {
             <option value="">Status</option>
             <option value="ativo">Ativo</option>
             <option value="inativo">Inativo</option>
-          </select>
+          </SelectField>
 
-          <select
+          <SelectField
             value={ufFiltro}
             onChange={(e) =>
               setUfFiltro(e.target.value)
@@ -99,7 +102,7 @@ export default function CrudUsuariosPage() {
                 {uf.sigla}
               </option>
             ))}
-          </select>
+          </SelectField>
         </div>
 
         {/* TABELA */}
@@ -155,19 +158,19 @@ export default function CrudUsuariosPage() {
                       ✏️
                     </Link>
 
-                    <button
+                    <Button
                       onClick={() =>
                         toggleStatus(u.ativo)
                       }
                     >
                       {u.ativo ? "🚫" : "✅"}
-                    </button>
+                    </Button>
 
-                    <button
+                    <Button
                       onClick={() => handleDelete(u.id)}
                     >
                       🗑
-                    </button>
+                    </Button>
                   </td>
 
                 </tr>

@@ -8,6 +8,8 @@ import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
 import { noticias } from "../../data/noticias";
 import { comentarios } from "../../data/comentarios";
+import Button from "../../components/ui/Button";
+import InputField from "../../components/ui/InputField";
 
 export default function PerfilAutorPage() {
   // Mock: autor logado (id 6 começa os autores no seu mock)
@@ -55,7 +57,7 @@ export default function PerfilAutorPage() {
   }
 
   return (
-    <PageLayout title="Perfil do Autor">
+    <>
       <div className={styles.container}>
         
         {/* PERFIL */}
@@ -75,23 +77,22 @@ export default function PerfilAutorPage() {
               <p>{form.bio}</p>
               <p>Cadastrado em: {usuario.criadoEm}</p>
 
-              <button
+              <Button
                 onClick={() => setEditando(true)}
-                className={styles.button}
               >
                 Editar Perfil
-              </button>
+              </Button>
             </>
           ) : (
             <div className={styles.form}>
-              <input
+              <InputField
                 value={form.nome}
                 onChange={(e) =>
                   setForm({ ...form, nome: e.target.value })
                 }
               />
 
-              <input
+              <InputField
                 value={form.email}
                 onChange={(e) =>
                   setForm({ ...form, email: e.target.value })
@@ -106,13 +107,13 @@ export default function PerfilAutorPage() {
               />
 
               <div className={styles.actions}>
-                <button onClick={handleSalvar} className={styles.button}>
+                <Button onClick={handleSalvar}>
                   Salvar
-                </button>
+                </Button>
 
-                <button onClick={handleCancelar} className={styles.cancel}>
+                <Button onClick={handleCancelar}>
                   Cancelar
-                </button>
+                </Button>
               </div>
             </div>
           )}
@@ -163,6 +164,6 @@ export default function PerfilAutorPage() {
           ))}
         </div>
       </div>
-    </PageLayout>
+    </>
   );
 }

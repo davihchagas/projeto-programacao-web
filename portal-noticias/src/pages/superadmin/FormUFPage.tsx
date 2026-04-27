@@ -4,6 +4,8 @@ import PageLayout from "../../components/layout/PageLayout";
 import styles from "./FormUFPage.module.css";
 
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import Button from "../../components/ui/Button";
 
 export default function FormUFPage() {
   const { id } = useParams();
@@ -45,7 +47,7 @@ export default function FormUFPage() {
         {/* FORM */}
         <div className={styles.form}>
           
-          <input
+          <InputField
             type="text"
             placeholder="Sigla (ex: SP)"
             value={sigla}
@@ -55,7 +57,7 @@ export default function FormUFPage() {
             maxLength={2}
           />
 
-          <input
+          <InputField
             type="text"
             placeholder="Nome (ex: São Paulo)"
             value={nome}
@@ -64,16 +66,16 @@ export default function FormUFPage() {
 
           {/* BOTÕES */}
           <div className={styles.actions}>
-            <button onClick={handleSalvar}>
+            <Button onClick={handleSalvar}>
               Salvar
-            </button>
+            </Button>
 
-            <button
+            <Button
               onClick={() => navigate("/admin/ufs")}
               className={styles.cancel}
             >
               Cancelar
-            </button>
+            </Button>
           </div>
 
         </div>

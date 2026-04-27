@@ -6,6 +6,9 @@ import styles from "./FormUsuarioPage.module.css";
 import { usuarios } from "../../data/usuarios";
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function FormUsuarioPage() {
   const { id } = useParams();
@@ -69,7 +72,7 @@ export default function FormUsuarioPage() {
         
         <div className={styles.form}>
           
-          <input
+          <InputField
             value={form.nome}
             onChange={(e) =>
               setForm({ ...form, nome: e.target.value })
@@ -77,12 +80,12 @@ export default function FormUsuarioPage() {
             placeholder="Nome"
           />
 
-          <input
+          <InputField
             value={form.email}
             readOnly
           />
 
-          <select
+          <SelectField
             value={form.perfil}
             onChange={(e) =>
               setForm({
@@ -96,10 +99,10 @@ export default function FormUsuarioPage() {
             <option value="AUTOR">Autor</option>
             <option value="EDITOR">Editor</option>
             <option value="SUPERADMIN">Admin</option>
-          </select>
+          </SelectField>
 
           {/* UF */}
-          <select
+          <SelectField
             value={form.ufId}
             onChange={(e) =>
               setForm({
@@ -115,10 +118,10 @@ export default function FormUsuarioPage() {
                 {uf.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
 
           {/* CIDADE */}
-          <select
+          <SelectField
             value={form.cidadeId}
             onChange={(e) =>
               setForm({
@@ -133,7 +136,7 @@ export default function FormUsuarioPage() {
                 {c.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
 
           <textarea
             placeholder="Bio"
@@ -148,7 +151,7 @@ export default function FormUsuarioPage() {
 
           {/* ATIVO */}
           <label className={styles.checkbox}>
-            <input
+            <InputField
               type="checkbox"
               checked={form.ativo}
               onChange={(e) =>
@@ -163,18 +166,18 @@ export default function FormUsuarioPage() {
 
           {/* BOTÕES */}
           <div className={styles.actions}>
-            <button onClick={handleSalvar}>
+            <Button onClick={handleSalvar}>
               Salvar
-            </button>
+            </Button>
 
-            <button
+            <Button
               onClick={() =>
                 navigate("/admin/usuarios")
               }
               className={styles.cancel}
             >
               Cancelar
-            </button>
+            </Button>
           </div>
 
         </div>

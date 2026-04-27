@@ -8,6 +8,9 @@ import { ufs } from "../../data/ufs";
 import { cidades } from "../../data/cidades";
 import { tags } from "../../data/tags";
 import { usuarios } from "../../data/usuarios";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function EditarQualquerNoticiaPage() {
   const { id } = useParams();
@@ -89,21 +92,21 @@ export default function EditarQualquerNoticiaPage() {
           
           {/* FORM */}
           <div className={styles.form}>
-            <input
+            <InputField
               value={form.titulo}
               onChange={(e) =>
                 setForm({ ...form, titulo: e.target.value })
               }
             />
 
-            <input
+            <InputField
               value={form.subtitulo}
               onChange={(e) =>
                 setForm({ ...form, subtitulo: e.target.value })
               }
             />
 
-            <input
+            <InputField
               value={form.imagem}
               onChange={(e) =>
                 setForm({ ...form, imagem: e.target.value })
@@ -125,7 +128,7 @@ export default function EditarQualquerNoticiaPage() {
               }
             />
 
-            <select
+            <SelectField
               value={form.ufId}
               onChange={(e) =>
                 setForm({
@@ -141,9 +144,9 @@ export default function EditarQualquerNoticiaPage() {
                   {uf.nome}
                 </option>
               ))}
-            </select>
+            </SelectField>
 
-            <select
+            <SelectField
               value={form.cidadeId}
               onChange={(e) =>
                 setForm({
@@ -158,7 +161,7 @@ export default function EditarQualquerNoticiaPage() {
                   {c.nome}
                 </option>
               ))}
-            </select>
+            </SelectField>
 
             {/* TAGS */}
             <div className={styles.tags}>
@@ -179,16 +182,15 @@ export default function EditarQualquerNoticiaPage() {
 
             {/* BOTÕES */}
             <div className={styles.actions}>
-              <button onClick={handleSalvar}>
+              <Button onClick={handleSalvar}>
                 Salvar Alterações
-              </button>
+              </Button>
 
-              <button
+              <Button
                 onClick={() => navigate("/editor/painel")}
-                className={styles.cancel}
               >
                 Cancelar
-              </button>
+              </Button>
             </div>
           </div>
 

@@ -8,6 +8,9 @@ import { usuarios } from "../../data/usuarios";
 import { ufs } from "../../data/ufs";
 import { cidades } from "../../data/cidades";
 import { tags } from "../../data/tags";
+import SelectField from "../../components/ui/SelectedField";
+import InputField from "../../components/ui/InputField";
+import Button from "../../components/ui/Button";
 
 export default function FormNoticiaAdminPage() {
   const { id } = useParams();
@@ -86,7 +89,7 @@ export default function FormNoticiaAdminPage() {
           <div className={styles.form}>
             
             {/* AUTOR */}
-            <select
+            <SelectField
               value={form.autorId}
               onChange={(e) =>
                 setForm({
@@ -101,9 +104,9 @@ export default function FormNoticiaAdminPage() {
                   {u.nome} ({u.perfil})
                 </option>
               ))}
-            </select>
+            </SelectField>
 
-            <input
+            <InputField
               value={form.titulo}
               onChange={(e) =>
                 setForm({
@@ -114,7 +117,7 @@ export default function FormNoticiaAdminPage() {
               placeholder="Título"
             />
 
-            <input
+            <InputField
               value={form.subtitulo}
               onChange={(e) =>
                 setForm({
@@ -125,7 +128,7 @@ export default function FormNoticiaAdminPage() {
               placeholder="Subtítulo"
             />
 
-            <input
+            <InputField
               value={form.imagem}
               onChange={(e) =>
                 setForm({
@@ -155,7 +158,7 @@ export default function FormNoticiaAdminPage() {
             />
 
             {/* UF */}
-            <select
+            <SelectField
               value={form.ufId}
               onChange={(e) =>
                 setForm({
@@ -171,10 +174,10 @@ export default function FormNoticiaAdminPage() {
                   {uf.nome}
                 </option>
               ))}
-            </select>
+            </SelectField>
 
             {/* CIDADE */}
-            <select
+            <SelectField
               value={form.cidadeId}
               onChange={(e) =>
                 setForm({
@@ -189,7 +192,7 @@ export default function FormNoticiaAdminPage() {
                   {c.nome}
                 </option>
               ))}
-            </select>
+            </SelectField>
 
             {/* TAGS */}
             <div className={styles.tags}>
@@ -210,18 +213,18 @@ export default function FormNoticiaAdminPage() {
 
             {/* BOTÕES */}
             <div className={styles.actions}>
-              <button onClick={handleSalvar}>
+              <Button onClick={handleSalvar}>
                 Salvar
-              </button>
+              </Button>
 
-              <button
+              <Button
                 onClick={() =>
                   navigate("/admin/noticias")
                 }
                 className={styles.cancel}
               >
                 Cancelar
-              </button>
+              </Button>
             </div>
 
           </div>

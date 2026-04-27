@@ -7,6 +7,7 @@ import { usuarios } from "../../data/usuarios";
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
 import { tags } from "../../data/tags";
+import Button from "../../components/ui/Button";
 
 export default function PublicarDespublicarPage() {
   const { id } = useParams();
@@ -66,14 +67,14 @@ export default function PublicarDespublicarPage() {
             <span>{autor?.nome}</span>
           </div>
 
-          <button
+          <Button
             onClick={handleTogglePublicacao}
             className={styles.button}
           >
             {noticia.publicada
               ? "Despublicar"
               : "Publicar"}
-          </button>
+          </Button>
         </div>
 
         {/* CONTEÚDO */}

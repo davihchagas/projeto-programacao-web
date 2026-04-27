@@ -6,6 +6,9 @@ import styles from "./CrudCidadesPage.module.css";
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
 import { noticias } from "../../data/noticias";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function CrudCidadesPage() {
   const [busca, setBusca] = useState("");
@@ -49,14 +52,14 @@ export default function CrudCidadesPage() {
 
         {/* FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             type="text"
             placeholder="Buscar cidade..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={ufFiltro}
             onChange={(e) =>
               setUfFiltro(e.target.value)
@@ -68,7 +71,7 @@ export default function CrudCidadesPage() {
                 {uf.sigla}
               </option>
             ))}
-          </select>
+          </SelectField>
         </div>
 
         {/* TABELA */}
@@ -107,11 +110,11 @@ export default function CrudCidadesPage() {
                       ✏️
                     </Link>
 
-                    <button
+                    <Button
                       onClick={() => handleDelete(c.id)}
                     >
                       🗑
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               );

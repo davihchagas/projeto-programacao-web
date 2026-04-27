@@ -5,6 +5,7 @@ import styles from "./ComentarAutorPage.module.css";
 
 import { noticias } from "../../data/noticias";
 import { usuarios } from "../../data/usuarios";
+import Button from "../../components/ui/Button";
 
 export default function ComentarAutorPage() {
   const { noticiaId } = useParams();
@@ -69,13 +70,12 @@ export default function ComentarAutorPage() {
               {texto.length}/{max}
             </div>
 
-            <button
+            <Button
               onClick={handleEnviar}
-              className={styles.button}
               disabled={!texto.trim()}
             >
               Enviar Comentário
-            </button>
+            </Button>
           </>
         ) : (
           <div className={styles.success}>

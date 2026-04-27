@@ -1,6 +1,9 @@
 import { Link } from "react-router";
 import PageLayout from "../../components/layout/PageLayout";
 import styles from "./CadastroPage.module.css";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function CadastroPage() {
   return (
@@ -10,43 +13,39 @@ export default function CadastroPage() {
           <h2 className={styles.title}>Criar Conta</h2>
 
           <form className={styles.form}>
-            <input
+            <InputField
               type="text"
               placeholder="Nome completo"
-              className={styles.input}
             />
 
-            <input
+            <InputField
               type="email"
               placeholder="E-mail"
-              className={styles.input}
             />
 
-            <input
+            <InputField
               type="password"
               placeholder="Senha"
-              className={styles.input}
             />
 
-            <input
+            <InputField
               type="password"
               placeholder="Confirmar senha"
-              className={styles.input}
             />
 
-            <select className={styles.input}>
+            <SelectField className={styles.input}>
               <option>Selecione a UF</option>
               <option>SP</option>
               <option>RJ</option>
               <option>MG</option>
-            </select>
+            </SelectField>
 
-            <select className={styles.input}>
+            <SelectField className={styles.input}>
               <option>Selecione a cidade</option>
               <option>São Paulo</option>
               <option>Rio de Janeiro</option>
               <option>Belo Horizonte</option>
-            </select>
+            </SelectField>
 
             <textarea
               placeholder="Bio (opcional)"
@@ -54,9 +53,9 @@ export default function CadastroPage() {
               rows={4}
             />
 
-            <button type="submit" className={styles.button}>
+            <Button type="submit">
               Criar Conta
-            </button>
+            </Button>
           </form>
 
           <div className={styles.links}>

@@ -6,6 +6,9 @@ import { ufs } from "../../data/ufs";
 import { cidades } from "../../data/cidades";
 import { tags } from "../../data/tags";
 import { usuarios } from "../../data/usuarios";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function NovaNoticiaPage() {
   const autor = usuarios.find((u) => u.id === 6)!;
@@ -56,7 +59,7 @@ export default function NovaNoticiaPage() {
         {/* FORM */}
         <div className={styles.form}>
           
-          <input
+          <InputField
             placeholder="Título"
             value={form.titulo}
             onChange={(e) =>
@@ -64,7 +67,7 @@ export default function NovaNoticiaPage() {
             }
           />
 
-          <input
+          <InputField
             placeholder="Subtítulo"
             value={form.subtitulo}
             onChange={(e) =>
@@ -72,7 +75,7 @@ export default function NovaNoticiaPage() {
             }
           />
 
-          <input
+          <InputField
             placeholder="URL da imagem"
             value={form.imagem}
             onChange={(e) =>
@@ -97,7 +100,7 @@ export default function NovaNoticiaPage() {
           />
 
           {/* UF */}
-          <select
+          <SelectField
             value={form.ufId}
             onChange={(e) =>
               setForm({
@@ -113,10 +116,10 @@ export default function NovaNoticiaPage() {
                 {uf.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
 
           {/* Cidade */}
-          <select
+          <SelectField
             value={form.cidadeId}
             onChange={(e) =>
               setForm({
@@ -131,7 +134,7 @@ export default function NovaNoticiaPage() {
                 {c.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
 
           {/* TAGS */}
           <div className={styles.tags}>
@@ -154,13 +157,13 @@ export default function NovaNoticiaPage() {
 
           {/* BOTÕES */}
           <div className={styles.actions}>
-            <button onClick={() => handleSubmit("rascunho")}>
+            <Button onClick={() => handleSubmit("rascunho")}>
               Salvar como Rascunho
-            </button>
+            </Button>
 
-            <button onClick={() => handleSubmit("revisao")}>
+            <Button onClick={() => handleSubmit("revisao")}>
               Enviar para Revisão
-            </button>
+            </Button>
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import styles from "./CrudUFPage.module.css";
 
 import { ufs } from "../../data/ufs";
 import { cidades } from "../../data/cidades";
+import Button from "../../components/ui/Button";
 
 export default function CrudUFPage() {
   const [busca, setBusca] = useState("");
@@ -73,9 +74,9 @@ export default function CrudUFPage() {
                       ✏️
                     </Link>
 
-                    <button onClick={() => handleDelete(uf.id)}>
+                    <Button onClick={() => handleDelete(uf.id)}>
                       🗑
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               );

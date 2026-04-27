@@ -4,6 +4,11 @@ import PageLayout from "../../components/layout/PageLayout";
 import styles from "./MinhasNoticiasPage.module.css";
 
 import { noticias } from "../../data/noticias";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
+import PerfilAutorPage from "./PerfilAutorPage";
+import ComentarAutorPage from "./ComentarAutorPage";
 
 export default function MinhasNoticiasPage() {
   // Mock: autor logado = id 6
@@ -36,6 +41,11 @@ export default function MinhasNoticiasPage() {
 
   return (
     <PageLayout title="Minhas Notícias">
+
+      <PerfilAutorPage/>
+
+      <br />
+
       <div className={styles.container}>
         
         {/* HEADER */}
@@ -52,21 +62,21 @@ export default function MinhasNoticiasPage() {
 
         {/* FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             type="text"
             placeholder="Buscar por título..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="todas">Todas</option>
             <option value="publicadas">Publicadas</option>
             <option value="rascunhos">Rascunhos</option>
-          </select>
+          </SelectField>
         </div>
 
         {/* TABELA */}
@@ -104,12 +114,11 @@ export default function MinhasNoticiasPage() {
                       ✏️
                     </Link>
 
-                    <button
+                    <Button
                       onClick={() => handleDelete(n.id)}
-                      title="Excluir"
                     >
                       🗑
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               ))}

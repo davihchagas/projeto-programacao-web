@@ -5,6 +5,7 @@ import styles from "./ComentarLeitorPage.module.css";
 
 import { noticias } from "../../data/noticias";
 import { usuarios } from "../../data/usuarios";
+import Button from "../../components/ui/Button";
 
 export default function ComentarLeitorPage() {
   const { noticiaId } = useParams();
@@ -67,12 +68,12 @@ export default function ComentarLeitorPage() {
               {texto.length}/{max}
             </div>
 
-            <button
+            <Button
               onClick={handleEnviar}
               className={styles.button}
             >
               Enviar Comentário
-            </button>
+            </Button>
           </>
         ) : (
           <div className={styles.success}>

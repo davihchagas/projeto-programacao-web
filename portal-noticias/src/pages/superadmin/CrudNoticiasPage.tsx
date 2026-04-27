@@ -7,6 +7,9 @@ import { noticias } from "../../data/noticias";
 import { usuarios } from "../../data/usuarios";
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function CrudNoticiasPage() {
   const [busca, setBusca] = useState("");
@@ -61,22 +64,22 @@ export default function CrudNoticiasPage() {
         
         {/* FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             placeholder="Buscar título..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="">Status</option>
             <option value="publicada">Publicadas</option>
             <option value="rascunho">Rascunhos</option>
-          </select>
+          </SelectField>
 
-          <select
+          <SelectField
             value={ufFiltro}
             onChange={(e) => setUfFiltro(e.target.value)}
           >
@@ -86,9 +89,9 @@ export default function CrudNoticiasPage() {
                 {uf.sigla}
               </option>
             ))}
-          </select>
+          </SelectField>
 
-          <select
+          <SelectField
             value={autorFiltro}
             onChange={(e) =>
               setAutorFiltro(e.target.value)
@@ -100,7 +103,7 @@ export default function CrudNoticiasPage() {
                 {u.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
         </div>
 
         {/* TABELA */}
@@ -157,19 +160,19 @@ export default function CrudNoticiasPage() {
                       ✏️
                     </Link>
 
-                    <button
+                    <Button
                       onClick={() =>
                         togglePublicacao(n.publicada)
                       }
                     >
                       {n.publicada ? "🚫" : "✅"}
-                    </button>
+                    </Button>
 
-                    <button
+                    <Button
                       onClick={() => handleDelete(n.id)}
                     >
                       🗑
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               );

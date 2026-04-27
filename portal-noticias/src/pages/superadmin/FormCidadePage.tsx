@@ -5,6 +5,9 @@ import styles from "./FormCidadePage.module.css";
 
 import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function FormCidadePage() {
   const { id } = useParams();
@@ -45,14 +48,14 @@ export default function FormCidadePage() {
         
         <div className={styles.form}>
           
-          <input
+          <InputField
             type="text"
             placeholder="Nome da cidade"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={ufId}
             onChange={(e) => setUfId(e.target.value)}
           >
@@ -62,20 +65,20 @@ export default function FormCidadePage() {
                 {uf.sigla} - {uf.nome}
               </option>
             ))}
-          </select>
+          </SelectField>
 
           {/* BOTÕES */}
           <div className={styles.actions}>
-            <button onClick={handleSalvar}>
+            <Button onClick={handleSalvar}>
               Salvar
-            </button>
+            </Button>
 
-            <button
+            <Button
               onClick={() => navigate("/admin/cidades")}
               className={styles.cancel}
             >
               Cancelar
-            </button>
+            </Button>
           </div>
 
         </div>

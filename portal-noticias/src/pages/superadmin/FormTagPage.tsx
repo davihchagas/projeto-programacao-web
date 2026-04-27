@@ -4,6 +4,8 @@ import PageLayout from "../../components/layout/PageLayout";
 import styles from "./FormTagPage.module.css";
 
 import { tags } from "../../data/tags";
+import InputField from "../../components/ui/InputField";
+import Button from "../../components/ui/Button";
 
 export default function FormTagPage() {
   const { id } = useParams();
@@ -61,7 +63,7 @@ export default function FormTagPage() {
           
           {/* FORM */}
           <div className={styles.form}>
-            <input
+            <InputField
               type="text"
               placeholder="Nome da tag"
               value={nome}
@@ -77,16 +79,16 @@ export default function FormTagPage() {
 
             {/* BOTÕES */}
             <div className={styles.actions}>
-              <button onClick={handleSalvar}>
+              <Button onClick={handleSalvar}>
                 Salvar
-              </button>
+              </Button>
 
-              <button
+              <Button
                 onClick={() => navigate("/admin/tags")}
                 className={styles.cancel}
               >
                 Cancelar
-              </button>
+              </Button>
             </div>
           </div>
 

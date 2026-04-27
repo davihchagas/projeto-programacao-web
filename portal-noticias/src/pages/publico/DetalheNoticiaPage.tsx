@@ -9,6 +9,7 @@ import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
 import { tags } from "../../data/tags";
 import { comentarios as comentariosData } from "../../data/comentarios";
+import Button from "../../components/ui/Button";
 
 export default function DetalheNoticiaPage() {
   const { id } = useParams();
@@ -139,9 +140,9 @@ export default function DetalheNoticiaPage() {
               className={styles.textarea}
             />
 
-            <button onClick={handleComentario} className={styles.button}>
+            <Button onClick={handleComentario}>
               Enviar Comentário
-            </button>
+            </Button>
 
             <div className={styles.commentList}>
               {comentarios.map((c) => {

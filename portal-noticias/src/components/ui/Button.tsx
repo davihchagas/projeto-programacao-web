@@ -5,6 +5,9 @@ type Props = {
   variant?: "primary" | "danger" | "secondary" | "success";
   onClick?: () => void;
   full?: boolean;
+  type?: string
+  disabled?: boolean
+  className?: string
 };
 
 export default function Button({
@@ -12,10 +15,11 @@ export default function Button({
   variant = "primary",
   onClick,
   full,
+  className
 }: Props) {
   return (
     <button
-      className={`${styles.btn} ${styles[variant]} ${
+      className={`${styles.btn} ${styles[variant]} ${className} ${
         full ? styles.full : ""
       }`}
       onClick={onClick}

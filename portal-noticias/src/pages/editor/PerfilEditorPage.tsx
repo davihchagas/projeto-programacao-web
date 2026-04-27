@@ -7,6 +7,8 @@ import { cidades } from "../../data/cidades";
 import { ufs } from "../../data/ufs";
 import { noticias } from "../../data/noticias";
 import { comentarios } from "../../data/comentarios";
+import Button from "../../components/ui/Button";
+import InputField from "../../components/ui/InputField";
 
 export default function PerfilEditorPage() {
   // Mock: editor logado (no seu mock começa depois dos autores)
@@ -69,23 +71,23 @@ export default function PerfilEditorPage() {
               <p>{form.bio}</p>
               <p>Cadastrado em: {usuario.criadoEm}</p>
 
-              <button
+              <Button
                 onClick={() => setEditando(true)}
                 className={styles.button}
               >
                 Editar Perfil
-              </button>
+              </Button>
             </>
           ) : (
             <div className={styles.form}>
-              <input
+              <InputField
                 value={form.nome}
                 onChange={(e) =>
                   setForm({ ...form, nome: e.target.value })
                 }
               />
 
-              <input
+              <InputField
                 value={form.email}
                 onChange={(e) =>
                   setForm({ ...form, email: e.target.value })
@@ -100,13 +102,13 @@ export default function PerfilEditorPage() {
               />
 
               <div className={styles.actions}>
-                <button onClick={handleSalvar} className={styles.button}>
+                <Button onClick={handleSalvar} className={styles.button}>
                   Salvar
-                </button>
+                </Button>
 
-                <button onClick={handleCancelar} className={styles.cancel}>
+                <Button onClick={handleCancelar} className={styles.cancel}>
                   Cancelar
-                </button>
+                </Button>
               </div>
             </div>
           )}

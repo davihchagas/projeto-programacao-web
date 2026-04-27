@@ -6,6 +6,9 @@ import styles from "./GerenciarComentariosPage.module.css";
 import { comentarios } from "../../data/comentarios";
 import { usuarios } from "../../data/usuarios";
 import { noticias } from "../../data/noticias";
+import InputField from "../../components/ui/InputField";
+import SelectField from "../../components/ui/SelectedField";
+import Button from "../../components/ui/Button";
 
 export default function GerenciarComentariosPage() {
   const [busca, setBusca] = useState("");
@@ -68,34 +71,34 @@ export default function GerenciarComentariosPage() {
         
         {/* FILTROS */}
         <div className={styles.filters}>
-          <input
+          <InputField
             placeholder="Buscar comentário ou autor..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
           />
 
-          <select
+          <SelectField
             value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="">Todos</option>
             <option value="aprovado">Aprovados</option>
             <option value="pendente">Pendentes</option>
-          </select>
+          </SelectField>
         </div>
 
         {/* AÇÕES EM LOTE */}
         <div className={styles.bulkActions}>
-          <button onClick={aprovarSelecionados}>
+          <Button onClick={aprovarSelecionados}>
             Aprovar Selecionados
-          </button>
+          </Button>
 
-          <button
+          <Button
             onClick={excluirSelecionados}
             className={styles.delete}
           >
             Excluir Selecionados
-          </button>
+          </Button>
         </div>
 
         {/* LISTA */}
@@ -112,7 +115,7 @@ export default function GerenciarComentariosPage() {
             return (
               <div key={c.id} className={styles.item}>
                 
-                <input
+                <InputField
                   type="checkbox"
                   checked={selecionados.includes(c.id)}
                   onChange={() => toggleSelecionado(c.id)}
@@ -150,26 +153,26 @@ export default function GerenciarComentariosPage() {
 
                 {/* AÇÕES */}
                 <div className={styles.actions}>
-                  <button
+                  <Button
                     className={styles.approve}
                     onClick={() => handleAprovar(c.id)}
                   >
                     ✔
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
                     className={styles.reject}
                     onClick={() => handleRejeitar(c.id)}
                   >
                     ✖
-                  </button>
+                  </Button>
 
-                  <button
+                  <Button
                     className={styles.delete}
                     onClick={() => handleDelete(c.id)}
                   >
                     🗑
-                  </button>
+                  </Button>
                 </div>
 
               </div>

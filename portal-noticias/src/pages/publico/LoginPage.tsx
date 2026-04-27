@@ -1,6 +1,9 @@
 import { useNavigate, Link } from "react-router";
 import PageLayout from "../../components/layout/PageLayout";
 import styles from "./LoginPage.module.css";
+import InputField from "../../components/ui/InputField";
+import Button from "../../components/ui/Button";
+import Card from "../../components/ui/Card";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -8,32 +11,30 @@ export default function LoginPage() {
   return (
     <PageLayout title="Login" showBackButton={false}>
       <div className={styles.container}>
-        <div className={styles.card}>
+        <Card>
           {/* Logo */}
           <h2 className={styles.logo}>Portal de Notícias</h2>
 
           {/* Form */}
           <form className={styles.form}>
-            <input
+            <InputField
               type="email"
               placeholder="E-mail"
-              className={styles.input}
             />
 
-            <input
+            <InputField
               type="password"
               placeholder="Senha"
-              className={styles.input}
             />
 
             <div className={styles.remember}>
-              <input type="checkbox" id="remember" />
+              <InputField type="checkbox" id="remember" />
               <label htmlFor="remember">Lembrar-me</label>
             </div>
 
-            <button type="submit" className={styles.button}>
+            <Button type="submit" variant="primary">
               Entrar
-            </button>
+            </Button>
           </form>
 
           {/* Links */}
@@ -47,24 +48,24 @@ export default function LoginPage() {
             <h3>Acesso Rápido (Desenvolvimento)</h3>
 
             <div className={styles.devButtons}>
-              <button onClick={() => navigate("/leitor/perfil")}>
+              <Button onClick={() => navigate("/leitor/perfil")}>
                 LEITOR
-              </button>
+              </Button>
 
-              <button onClick={() => navigate("/autor/noticias")}>
+              <Button onClick={() => navigate("/autor/noticias")}>
                 AUTOR
-              </button>
+              </Button>
 
-              <button onClick={() => navigate("/editor/painel")}>
+              <Button onClick={() => navigate("/editor/painel")}>
                 EDITOR
-              </button>
+              </Button>
 
-              <button onClick={() => navigate("/admin/dashboard")}>
+              <Button onClick={() => navigate("/admin/dashboard")}>
                 SUPERADMIN
-              </button>
+              </Button>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </PageLayout>
   );

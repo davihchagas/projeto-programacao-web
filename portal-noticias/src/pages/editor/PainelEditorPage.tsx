@@ -5,6 +5,7 @@ import { noticias } from "../../data/noticias";
 import { comentarios } from "../../data/comentarios";
 import { usuarios } from "../../data/usuarios";
 import { tags } from "../../data/tags";
+import Button from "../../components/ui/Button";
 
 export default function PainelEditorPage() {
   // 📊 MÉTRICAS
@@ -92,13 +93,13 @@ export default function PainelEditorPage() {
                       <td>{n.criadoEm}</td>
 
                       <td>
-                        <button className={styles.approve}>
+                        <Button className={styles.approve}>
                           ✔
-                        </button>
+                        </Button>
 
-                        <button className={styles.reject}>
+                        <Button className={styles.reject}>
                           ✖
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   );
@@ -122,13 +123,13 @@ export default function PainelEditorPage() {
                   <span>{autor?.nome}</span>
 
                   <div className={styles.actions}>
-                    <button className={styles.approve}>
+                    <Button className={styles.approve}>
                       Aprovar
-                    </button>
+                    </Button>
 
-                    <button className={styles.reject}>
+                    <Button className={styles.reject}>
                       Rejeitar
-                    </button>
+                    </Button>
                   </div>
                 </div>
               );
